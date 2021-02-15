@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <math.h>
+int towerOfHanoi(int diskCount, int startingPeg , int targetPeg, int tempPeg);
+
+int main(void){
+    int disks, start, temp , target;
+
+    printf("Enter the number of disks you want to play with :");
+    scanf("%d",&disks);
+    printf("Choose the starting peg you want the the disks to be threaded to :(1-3)");
+    scanf("%d",&start);
+    printf("Choose the temp peg for the simulation (1-3) :");
+    scanf("%d",&temp);
+    printf("Choose the target temp for the simulation (1-3) :");
+    scanf("%d",&target);
+
+    towerOfHanoi(disks,start,target,temp);
+    printf("\n\nMinimum number of steps needed : %.lf\n",pow(2,disks)-1);
+
+    return 0;
+}
+
+int towerOfHanoi(int diskCount, int startingPeg , int targetPeg, int tempPeg){
+    if (diskCount==1){
+        printf("%d ---> %d\n",startingPeg,targetPeg);
+        return 0;
+    }
+    towerOfHanoi(diskCount-1,startingPeg,tempPeg,targetPeg);
+    printf("%d ---> %d\n",startingPeg,targetPeg);
+    towerOfHanoi(diskCount-1,tempPeg,targetPeg,startingPeg);
+    return 0;
+}
