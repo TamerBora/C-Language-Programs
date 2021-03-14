@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+void takeValue(double*a,double*b,char *c);
+void process(double a,double b, char c);
+int main(void){
+    double a,b;
+    char c;
+    while(c!='q') {
+        takeValue(&a, &b, &c);
+        process(a, b, c);
+    }
+    return 0;
+}
+
+void takeValue(double *a , double *b, char *c){
+    printf("Enter operation : ");
+    scanf("%lf %c %lf",a,c,b);
+}
+
+void process(double a, double b, char c){
+    switch (c) {
+        case '+':
+            printf("%.2lf\n",a+b);
+            break;
+        case '-':
+            printf("%.2lf\n",a-b);
+            break;
+        case '*':
+            printf("%.2lf\n",a*b);
+            break;
+        case '/':
+            printf("%.2lf\n",a/b);
+            break;
+        default:
+            printf("Invalid operation\n");
+            break;
+    }
+
+}
